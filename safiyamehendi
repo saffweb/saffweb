@@ -1,0 +1,130 @@
+HTML:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Mehendi Designs</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li><a href="#home">Home</a></li>
+				<li><a href="#gallery">Gallery</a></li>
+				<li><a href="#services">Services</a></li>
+				<li><a href="#contact">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section id="home">
+			<h1>Welcome to Mehendi Designs</h1>
+			<p>Get the best mehendi designs for your special occasions</p>
+		</section>
+		<section id="gallery">
+			<h2>Gallery</h2>
+			<div class="gallery-container">
+				<img src="image1.jpg" alt="Mehendi Design">
+				<img src="image2.jpg" alt="Mehendi Design">
+				<img src="image3.jpg" alt="Mehendi Design">
+			</div>
+		</section>
+		<section id="services">
+			<h2>Services</h2>
+			<ul>
+				<li>Mehendi application for weddings and events</li>
+				<li>Custom mehendi designs</li>
+				<li>Mehendi classes and workshops</li>
+			</ul>
+		</section>
+		<section id="contact">
+			<h2>Contact Us</h2>
+			<form>
+				<label for="name">Name:</label>
+				<input type="text" id="name" name="name"><br><br>
+				<label for="email">Email:</label>
+				<input type="email" id="email" name="email"><br><br>
+				<label for="message">Message:</label>
+				<textarea id="message" name="message"></textarea><br><br>
+				<input type="submit" value="Send">
+			</form>
+		</section>
+	</main>
+	<footer>
+		<p>&copy; 2023 Mehendi Designs</p>
+	</footer>
+	<script src="script.js"></script>
+</body>
+</html>
+
+CSS (in style.css file):
+
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+header {
+	background-color: #333;
+	color: #fff;
+	padding: 1em;
+	text-align: center;
+}
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: space-between;
+}
+nav li {
+	margin-right: 20px;
+}
+nav a {
+	color: #fff;
+	text-decoration: none;
+}
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 2em;
+}
+section {
+	background-color: #f7f7f7;
+	padding: 2em;
+	margin-bottom: 20px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.gallery-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.gallery-container img {
+	width: 20%;
+	margin: 10px;
+}
+
+JavaScript (in script.js file):
+
+// Add event listener to form submission
+document.querySelector('form').addEventListener('submit', (e) => {
+	e.preventDefault();
+	// Get form data
+	const name = document.getElementById('name').value;
+	const email = document.getElementById('email').value;
+	const message = document.getElementById('message').value;
+	// Send data to server (replace with your server endpoint)
+	fetch('/contact', {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({ name, email, message }),
+	})
+		.then((res) => res.json())
+		.then((data) => console.log(data))
+		.catch((err) => console.error(err));
+});
